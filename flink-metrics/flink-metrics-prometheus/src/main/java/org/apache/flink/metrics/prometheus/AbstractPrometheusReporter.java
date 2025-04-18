@@ -104,7 +104,8 @@ public abstract class AbstractPrometheusReporter implements MetricReporter {
             final String key = dimension.getKey();
             dimensionKeys.add(
                     CHARACTER_FILTER.filterCharacters(key.substring(1, key.length() - 1)));
-            dimensionValues.add(labelValueCharactersFilter.filterCharacters(dimension.getValue()));
+            // dimensionValues.add(labelValueCharactersFilter.filterCharacters(dimension.getValue()));
+            dimensionValues.add(dimension.getValue());
         }
 
         final String scopedMetricName = getScopedName(metricName, group);
