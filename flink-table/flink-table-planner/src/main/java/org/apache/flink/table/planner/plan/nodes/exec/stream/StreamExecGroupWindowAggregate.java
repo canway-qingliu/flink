@@ -461,9 +461,9 @@ public class StreamExecGroupWindowAggregate extends StreamExecAggregateBase {
             long timeOut = config.get(WindowEmitStrategy.TABLE_EXEC_EMIT_EXPIRED_TIME())
                     .getSeconds();
             Trigger trigger = EventTimeTriggers.expiredTimeTrigger(timeOut);
+            builder.triggering(trigger);
             if (emitStrategy.getAllowLateness() > 0) {
-                builder.triggering(trigger)
-                        .withAllowedLateness(Duration.ofMillis(emitStrategy.getAllowLateness()));
+                builder.withAllowedLateness(Duration.ofMillis(emitStrategy.getAllowLateness()));
             }
         }
 
